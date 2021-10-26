@@ -34,13 +34,16 @@
     "transform": {
       "^.+\\.(ts)$": "ts-jest"
     },
+    "moduleNameMapper": {
+      "@src/(.*)": "<rootDir>/src/$1"
+    },
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
+        "tsconfig": "tsconfig.json"
       }
     },
     "testMatch": [
-      "<rootDir>/src/**/*.+(ts|js).js"
+      "<rootDir>/src/**/*.test.(ts|js)"
     ]
   },
   "_moduleAliases": {
