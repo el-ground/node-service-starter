@@ -11,10 +11,10 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "package": "tsc --skipLibCheck",
-    "package:listen": "yarn run clean && tsc --watch --skipLibCheck",
+    "package": "tsc --project tsconfig.src.json --skipLibCheck",
+    "package:listen": "yarn run clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
     "dev": "PORT=9021 HTTPS_PORT=9644 NODE_ENV=development CERT=$DEV_CERT CERT_KEY=$DEV_CERT_KEY nodemon dist/src/index.js",
-    "check-types": "tsc --skipLibCheck",
+    "check-types": "tsc --project tsconfig.src.json --skipLibCheck",
     "lint": "eslint  'src/**/*.{js,ts}' --quiet --fix",
     "prettier": "prettier 'src/**/*.{js,ts}' --list-different --write",
     "test": "jest --coverage --passWithNoTests",
@@ -35,7 +35,10 @@
       "^.+\\.(ts)$": "ts-jest"
     },
     "moduleNameMapper": {
-      "@src/(.*)": "<rootDir>/src/$1"
+      "@src/(.*)": "<rootDir>/src/$1",
+      "@framework/(.*)": "<rootDir>/src/framework/$1",
+      "@routers/(.*)": "<rootDir>/src/routers/$1",
+      "@model/(.*)": "<rootDir>/src/model/$1"
     },
     "globals": {
       "ts-jest": {
