@@ -2,11 +2,13 @@
   "compilerOptions": {
     // Target latest version of ECMAScript.
     "module": "es6",
-    "target": "ES2019",
+    "target": "es6",
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     // Process & infer types from .js files.
     "allowJs": true,
+    // Import non-ES modules as default imports.
+    "esModuleInterop": true,
     "strictNullChecks": true,
     // Enable strictest settings like strictNullChecks & noImplicitAny.
     "strict": true,
@@ -14,8 +16,6 @@
     "isolatedModules": true,
     // Allow JSON import
     "resolveJsonModule": true,
-    // Import non-ES modules as default imports.
-    "esModuleInterop": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "sourceMap": true,

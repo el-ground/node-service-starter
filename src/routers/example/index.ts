@@ -1,5 +1,8 @@
 import { wrap } from '#src/framework/express/router/index'
 import express, { Router } from 'express'
+import fetch from 'node-fetch'
+
+console.log(fetch)
 
 const router = Router()
 
