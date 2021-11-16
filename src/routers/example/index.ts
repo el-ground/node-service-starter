@@ -1,4 +1,4 @@
-import { wrap } from '@src/framework/express/router'
+import { wrap } from '#src/framework/express/router/index'
 import express, { Router } from 'express'
 
 const router = Router()

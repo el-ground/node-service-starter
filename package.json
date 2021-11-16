@@ -36,10 +36,10 @@
       "^.+\\.(ts)$": "ts-jest"
     },
     "moduleNameMapper": {
-      "@src/(.*)": "<rootDir>/src/$1",
-      "@framework/(.*)": "<rootDir>/src/framework/$1",
-      "@routers/(.*)": "<rootDir>/src/routers/$1",
-      "@model/(.*)": "<rootDir>/src/model/$1"
+      "#src/(.*)": "<rootDir>/src/$1",
+      "#framework/(.*)": "<rootDir>/src/framework/$1",
+      "#routers/(.*)": "<rootDir>/src/routers/$1",
+      "#model/(.*)": "<rootDir>/src/model/$1"
     },
     "globals": {
       "ts-jest": {
@@ -50,11 +50,11 @@
       "<rootDir>/src/**/*.test.(ts|js)"
     ]
   },
-  "_moduleAliases": {
-    "@src": "dist/src",
-    "@framework": "dist/src/framework",
-    "@routers": "dist/src/routers",
-    "@model": "dist/src/model"
+  "imports": {
+    "#src/*": "./dist/src/*.js",
+    "#framework/*": "./dist/src/framework/*.js",
+    "#routers/*": "./dist/src/routers/*.js",
+    "#model/*": "./dist/src/model/*.js"
   },
   "devDependencies": {
     "@types/cls-hooked": "^4.3.3",
@@ -94,8 +94,8 @@
     "express": "^4.17.1",
     "express-request-id": "^1.4.1",
     "ip": "^1.1.5",
-    "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
+    "node-fetch": "^3.0.0",
     "source-map-support": "^0.5.19",
     "winston": "^3.3.3"
   }

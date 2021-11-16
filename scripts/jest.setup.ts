@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '@src/app'
+import app from '#src/app'
 
 /* eslint-disable */
 global.model = (description, callback) => describe(`model: ${description}`, callback)

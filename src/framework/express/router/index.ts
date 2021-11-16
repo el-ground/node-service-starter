@@ -1,4 +1,4 @@
-import { to } from '@framework/util/async'
+import { to } from '#framework/util/async/index'
 
 type PromiseReturningFunction = (...any: any[]) => Promise<any>
 

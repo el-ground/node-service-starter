@@ -1,8 +1,9 @@
 // http://tostring.it/2014/06/23/advanced-logging-with-nodejs/
 
-import { createLogger, format, transports } from 'winston'
-import { getRequestId } from '@src/framework/express/middlewares/request-id'
+import winston from 'winston'
+import { getRequestId } from '#src/framework/express/middlewares/request-id/index'
 
+const { createLogger, format, transports } = winston
 const { combine, colorize, simple } = format
 
 const prependRequestId = format((info) => {
