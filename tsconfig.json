@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Target latest version of ECMAScript.
-    "module": "commonjs",
+    "module": "es6",
     "target": "ES2019",
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
@@ -19,6 +19,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "sourceMap": true,
+    "rootDir": "./",
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {

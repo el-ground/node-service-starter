@@ -7,12 +7,13 @@
   "author": "<jwjang@elground.com>",
   "license": "MIT",
   "engines": {
-    "node": "12"
+    "node": "14"
   },
+  "type": "module",
   "scripts": {
     "clean": "rm -rf dist",
-    "package": "tsc --project tsconfig.src.json --skipLibCheck",
-    "package:listen": "yarn run clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
+    "package": "yarn clean && tsc --project tsconfig.src.json --skipLibCheck",
+    "package:listen": "yarn clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
     "dev": "PORT=9021 HTTPS_PORT=9644 NODE_ENV=development CERT=$DEV_CERT CERT_KEY=$DEV_CERT_KEY nodemon dist/src/index.js",
     "check-types": "tsc --project tsconfig.src.json --skipLibCheck",
     "lint": "eslint  'src/**/*.{js,ts}' --quiet --fix",
