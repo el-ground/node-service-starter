@@ -12,25 +12,35 @@
   },
   "type": "module",
   "scripts": {
+    "clean:temp": "rm -rf temp",
     "clean": "rm -rf dist",
     "package": "yarn clean && tsc --project tsconfig.src.json --skipLibCheck",
-    "postpackage" : "cp package.json dist/package.json && cp yarn.lock dist/yarn.lock && cd dist && mkdir dist && mv src dist && yarn --prod",
-    "package:listen": "yarn clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
-    "dev": "cross-env PORT=9021 HTTPS_PORT=9644 NODE_ENV=development CERT=$DEV_CERT CERT_KEY=$DEV_CERT_KEY nodemon dist/src/index.js",
+    "postpackage": "cp package.json dist/package.json && cp yarn.lock dist/yarn.lock && cd dist && mkdir dist && mv src dist && mv temp dist && yarn --prod",
+    "_package:listen": "yarn setenv && yarn clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
+    "package:listen": "cross-env ENVIRONMENT=development yarn _package:listen",
+    "dev": "cross-env PORT=9023 HTTPS_PORT=9646 NODE_ENV=development CERT=$DEV_CERT CERT_KEY=$DEV_CERT_KEY nodemon --experimental-json-modules dist/src/index.js",
     "check-types": "tsc --project tsconfig.src.json --skipLibCheck",
     "lint": "eslint  'src/**/*.{js,ts}' --quiet --fix",
     "prettier": "prettier 'src/**/*.{js,ts}' --list-different --write",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage --passWithNoTests",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll --coverage --passWithNoTests",
-    "start": "cross-env NODE_ENV=production node dist/dist/src/index.js",
-    "predeploy": "yarn run clean && yarn run package",
-    "deploy": "gcloud app deploy gae-deployment.yaml"
+    "start": "cross-env NODE_ENV=production node --experimental-json-modules dist/dist/src/index.js",
+    "_deploy ": "yarn setenv && yarn run clean && yarn run package && gcloud app deploy gae-deployment.yaml",
+    "deploy:staging": "cross-env ENVIRONMENT=staging yarn _deploy",
+    "deploy:production": "cross-env ENVIRONMENT=production yarn _deploy",
+    "setenv": "yarn clean:temp && bash ../../../scripts/set-environment.sh"
   },
   "imports": {
     "#src/*": "./dist/src/*.js",
+    "#src/*.json": "./dist/src/*.json",
     "#framework/*": "./dist/src/framework/*.js",
+    "#framework/*.json": "./dist/src/framework/*.json",
     "#routers/*": "./dist/src/routers/*.js",
-    "#model/*": "./dist/src/model/*.js"
+    "#routers/*.json": "./dist/src/routers/*.jsson",
+    "#model/*": "./dist/src/model/*.js",
+    "#model/*.json": "./dist/src/model/*.json",
+    "#temp/*": "./dist/temp/*.js",
+    "#temp/*.json": "./dist/temp/*.json"
   },
   "devDependencies": {
     "@types/cls-hooked": "^4.3.3",

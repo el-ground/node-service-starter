@@ -7,6 +7,7 @@ export default {
     '#framework/(.*)': '<rootDir>/src/framework/$1',
     '#routers/(.*)': '<rootDir>/src/routers/$1',
     '#model/(.*)': '<rootDir>/src/model/$1',
+    '#temp/(.*)': '<rootDir>/temp/$1',
   },
   globals: {
     'ts-jest': {

@@ -35,11 +35,15 @@
       ],
       "#model/*": [
         "src/model/*"
+      ],
+      "#temp/*": [
+        "temp/*"
       ]
     },
   },
   "include": [
     "src/**/*",
+    "temp/**/*",
     "scripts/**/*"
   ]
 }

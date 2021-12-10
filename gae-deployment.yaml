@@ -1,7 +1,7 @@
 service: node-service-starter
 runtime: nodejs16
 instance_class: F1
-entrypoint: node dist/dist/src/index.js
+entrypoint: node --experimental-json-modules dist/dist/src/index.js
 
 handlers:
 - url: /.*
