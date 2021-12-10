@@ -2,7 +2,8 @@
   "name": "node-service-starter",
   "version": "1.0.0",
   "description": "node backend service starter",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:el-ground/node-service-starter.git",
   "author": "<jwjang@elground.com>",
   "license": "MIT",
@@ -13,6 +14,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "package": "yarn clean && tsc --project tsconfig.src.json --skipLibCheck",
+    "postpackage" : "cp package.json dist/package.json && cp yarn.lock dist/yarn.lock && cd dist && mkdir dist && mv src dist && yarn --prod",
     "package:listen": "yarn clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
     "dev": "cross-env PORT=9021 HTTPS_PORT=9644 NODE_ENV=development CERT=$DEV_CERT CERT_KEY=$DEV_CERT_KEY nodemon dist/src/index.js",
     "check-types": "tsc --project tsconfig.src.json --skipLibCheck",
@@ -20,9 +22,9 @@
     "prettier": "prettier 'src/**/*.{js,ts}' --list-different --write",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage --passWithNoTests",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll --coverage --passWithNoTests",
-    "start": "cross-env NODE_ENV=production node dist/src/index.js",
+    "start": "cross-env NODE_ENV=production node dist/dist/src/index.js",
     "predeploy": "yarn run clean && yarn run package",
-    "deploy": "gcloud app deploy $DEPLOYMENT_TYPE.yaml"
+    "deploy": "gcloud app deploy gae-deployment.yaml"
   },
   "imports": {
     "#src/*": "./dist/src/*.js",
