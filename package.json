@@ -15,7 +15,7 @@
     "clean:temp": "rm -rf temp",
     "clean": "rm -rf dist",
     "package": "yarn clean && tsc --project tsconfig.src.json --skipLibCheck",
-    "postpackage": "cp package.json dist/package.json && cp yarn.lock dist/yarn.lock && cd dist && mkdir dist && mv src dist && mv temp dist && yarn --prod",
+    "postpackage": "cp package.json dist/package.json && cp yarn.lock dist/yarn.lock && cd dist && mkdir dist && mv src dist && ([ ! -d temp ] || mv temp dist) && yarn --prod",
     "_package:listen": "yarn setenv && yarn clean && tsc --project tsconfig.src.json --watch --skipLibCheck",
     "package:listen": "cross-env ENVIRONMENT=development yarn _package:listen",
     "dev": "cross-env PORT=9023 HTTPS_PORT=9646 NODE_ENV=development CERT=$DEV_CERT CERT_KEY=$DEV_CERT_KEY nodemon --experimental-json-modules dist/src/index.js",
@@ -28,7 +28,7 @@
     "_deploy ": "yarn setenv && yarn run clean && yarn run package && gcloud app deploy gae-deployment.yaml",
     "deploy:staging": "cross-env ENVIRONMENT=staging yarn _deploy",
     "deploy:production": "cross-env ENVIRONMENT=production yarn _deploy",
-    "setenv": "yarn clean:temp && bash ../../../scripts/set-environment.sh"
+    "setenv": "yarn clean:temp && echo set environment and temp files here!"
   },
   "imports": {
     "#src/*": "./dist/src/*.js",
