@@ -22,7 +22,7 @@
         "ecmascript": 2019,
         "import/resolver": {
             "typescript": {
-              "alwaysTryTypes": true
+                "alwaysTryTypes": true
             }
         }
     },
@@ -39,4 +39,3 @@
         "jest/globals": true
     }
 }
-

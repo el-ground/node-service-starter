@@ -8,6 +8,7 @@ export default {
     '#framework/(.*)\\.js$': '<rootDir>/src/framework/$1',
     '#routers/(.*)\\.js$': '<rootDir>/src/routers/$1',
     '#model/(.*)\\.js$': '<rootDir>/src/model/$1',
+    '#util/(.*)\\.js$': '<rootDir>/src/util/$1',
     '#temp/(.*)\\.js$': '<rootDir>/temp/$1',
   },
   globals: {

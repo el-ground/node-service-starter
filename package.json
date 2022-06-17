@@ -34,6 +34,7 @@
     "#framework/*": "./dist/src/framework/*",
     "#routers/*": "./dist/src/routers/*",
     "#model/*": "./dist/src/model/*",
+    "#util/*": "./dist/src/util/*",
     "#temp/*": "./dist/temp/*"
   },
   "devDependencies": {
@@ -58,7 +59,7 @@
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.5.3",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-n": "^15.2.3",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",

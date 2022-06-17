@@ -1,9 +1,8 @@
 import 'source-map-support/register.js'
 
-import { bind, listen } from '#src/app.js'
-import router from '#src/routers/example/index.js'
+// not so pretty rn
+import { app } from '#src/app.js'
+import { listen } from '#src/framework/express/index.js'
 
-;(async () => {
-  bind([router])
-  listen()
-})()
+export { app }
+listen()

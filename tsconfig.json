@@ -36,10 +36,13 @@
       "#model/*": [
         "src/model/*"
       ],
+      "#util/*": [
+        "src/util/*"
+      ],
       "#temp/*": [
         "temp/*"
       ]
-    },
+    }
   },
   "include": [
     "src/**/*",

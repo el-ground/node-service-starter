@@ -26,8 +26,6 @@ export const logger = createLogger({
   exitOnError: false,
 })
 
-global.logger = logger
-
 export const stream = {
   write: (message: string) => {
     logger.info(message)

@@ -1,11 +1,8 @@
-import app from '../../app'
-import './'
+import { app } from '#src/app.js'
+import request from 'supertest'
 
-console.log(`app is ${app }`)
-
-describe (`foo`, () => {
-    test(`bar` , () => {
-        expect(1).toBe(1)
-
-    })
+describe(`foo`, () => {
+  test(`bar`, async () => {
+    await request(app).get(`/`).expect(200)
+  })
 })
