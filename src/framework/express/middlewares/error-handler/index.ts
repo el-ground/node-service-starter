@@ -1,5 +1,5 @@
 import express from 'express'
-import { logger } from '../logger'
+import { logger } from '../logger/index.js'
 
 export class ResError extends Error {
   code: number
