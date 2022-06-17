@@ -1,13 +1,14 @@
 export default {
   preset: 'ts-jest/presets/js-with-ts-esm',
+  transformIgnorePatterns: [],
   testEnvironment: 'jest-environment-node',
   setupFilesAfterEnv: ['./scripts/jest.setup.ts'],
   moduleNameMapper: {
-    '#src/(.*)': '<rootDir>/src/$1',
-    '#framework/(.*)': '<rootDir>/src/framework/$1',
-    '#routers/(.*)': '<rootDir>/src/routers/$1',
-    '#model/(.*)': '<rootDir>/src/model/$1',
-    '#temp/(.*)': '<rootDir>/temp/$1',
+    '#src/(.*)\\.js$': '<rootDir>/src/$1',
+    '#framework/(.*)\\.js$': '<rootDir>/src/framework/$1',
+    '#routers/(.*)\\.js$': '<rootDir>/src/routers/$1',
+    '#model/(.*)\\.js$': '<rootDir>/src/model/$1',
+    '#temp/(.*)\\.js$': '<rootDir>/temp/$1',
   },
   globals: {
     'ts-jest': {

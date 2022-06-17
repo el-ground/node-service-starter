@@ -1,4 +1,4 @@
-import { wrap } from '#src/framework/express/router/index'
+import { wrapAsyncRouteHandler } from '#src/framework/express/router/index.js'
 import express, { Router } from 'express'
 import fetch from 'node-fetch'
 
@@ -8,7 +8,7 @@ const router = Router()
 
 router.get(
   `/search`,
-  wrap(async (req: express.Request, res: express.Response) => {
+  wrapAsyncRouteHandler(async (req: express.Request, res: express.Response) => {
     res.status(200)
     res.send(`Hello world!`)
   }),

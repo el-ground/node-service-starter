@@ -11,9 +11,9 @@ import cors from 'cors'
 
 import ip from 'ip'
 
-import errorHandler from '#src/framework/express/middlewares/error-handler/index'
-import requestId from '#src/framework/express/middlewares/request-id/index'
-import { stream as loggerStream } from '#src/framework/express/middlewares/logger/index'
+import errorHandler from '#src/framework/express/middlewares/error-handler/index.js'
+import requestId from '#src/framework/express/middlewares/request-id/index.js'
+import { stream as loggerStream } from '#src/framework/express/middlewares/logger/index.js'
 
 import { EventEmitter } from 'events'
 
