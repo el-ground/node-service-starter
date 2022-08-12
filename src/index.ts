@@ -1,5 +1,3 @@
-import 'source-map-support/register.js'
-
 // not so pretty rn
 import { app } from '#src/app.js'
 import { listen } from '#src/framework/express/index.js'

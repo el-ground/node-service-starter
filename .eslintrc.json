@@ -1,7 +1,7 @@
 {
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 2019,
+        "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "extends": [
@@ -28,7 +28,7 @@
     },
     "rules": {
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-unused-vars": "warn",
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
         "jest/expect-expect": 0,
@@ -37,5 +37,8 @@
     "env": {
         "node": true,
         "jest/globals": true
+    },
+    "globals": {
+        "logger": true
     }
 }
