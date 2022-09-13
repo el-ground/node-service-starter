@@ -25,6 +25,7 @@
     "test": "jest --coverage --passWithNoTests",
     "test:watch": "jest --watchAll --coverage --passWithNoTests",
     "start": "cross-env NODE_ENV=production node dist/src/index.js",
+    "gcp-build": "echo run gcp build script here!",
     "_deploy": "yarn clean && yarn set-env && yarn package && gcloud app deploy gae-deployment.yaml",
     "deploy:staging": "cross-env ENVIRONMENT=staging yarn _deploy",
     "deploy:production": "cross-env ENVIRONMENT=production yarn _deploy"

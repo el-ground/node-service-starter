@@ -25,7 +25,7 @@ COPY yarn.lock .yarnrc.yml ./
 COPY .yarn ./.yarn
 
 # Install production dependencies.
-RUN yarn install --frozen-lockfile --production=true
+RUN yarn workspaces focus --production
 
 # Copy local code to the container image.
 COPY . ./
