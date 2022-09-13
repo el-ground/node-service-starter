@@ -18,16 +18,23 @@ WORKDIR $HOME/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
 # Copying this separately prevents re-running npm install on every code change.
 COPY package.json ./
-COPY yarn.lock ./
+
+RUN yarn set version berry
+
+COPY yarn.lock .yarnrc.yml ./
+COPY .yarn ./.yarn
 
 # Install production dependencies.
-RUN yarn install --prod
+RUN yarn install --frozen-lockfile --production=true
 
 # Copy local code to the container image.
 COPY . ./
 
 # Set user to run
 # USER $USERNAME
+
+# environment variable required for run
+ENV PORT=
 
 # serve entrypoint of your service by supplying start:api or start:media
 ENTRYPOINT [ "yarn" ]

@@ -1,3 +1,5 @@
+# .gcloudignore works differently!  https://stackoverflow.com/questions/52976199/gcloudignore-doesnt-allow-standard-wildcard-whitelist
+# wildcards has issues :(
 # Ignore everything
 *
 
@@ -15,10 +17,17 @@
 *DS_Store
 
 # yarn w/o pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+!.yarnrc.yml
+# .pnp.* # ignored by default
+!.yarn/**
+# instead of adding required files, we'll exclude unnecessary files.
+.yarn/cache
+.yarn/install-state.gz
+# !.yarn/patches/**
+# !.yarn/plugins/**
+# !.yarn/releases/**
+# !.yarn/sdks/*
+# !.yarn/versions/**
+
+# Explicitly allow current dir. `gcloud deploy` fails without it.
+!.
