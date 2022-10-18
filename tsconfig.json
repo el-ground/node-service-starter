@@ -27,9 +27,34 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
+      // exmaple of directory aliases
       "#src/*": [
         "src/*"
-      ]
+      ],
+      "#framework/*": [
+        "src/framework/*"
+      ],
+      "#util/*": [
+        "src/util/*"
+      ],
+      "#model/*": [
+        "src/model/*"
+      ],
+      "#methods/*": [
+        "src/methods/*"
+      ],
+      "#plugins/*": [
+        "src/plugins/*"
+      ],
+      "#temp/*": [
+        "temp/*"
+      ],
+      "#assets/*": [
+        "assets/*"
+      ],
+      "#data/*": [
+        "data/*"
+      ],
     }
   },
   "include": [
@@ -38,5 +63,8 @@
   ],
   "exclude": [
     "dist"
-  ]
+  ],
+  "tsc-alias": {
+    "resolveFullPaths": true,
+  }
 }
