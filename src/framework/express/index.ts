@@ -11,12 +11,12 @@ import cors from 'cors'
 
 import ip from 'ip'
 
-import { errorHandler } from '#src/framework/express/middlewares/error-handler/index.js'
+import { errorHandler } from '#src/framework/express/middlewares/error-handler'
 import {
   logger,
   stream as loggerStream,
-} from '#src/framework/express/middlewares/logger/index.js'
-import requestId from '#src/framework/express/middlewares/request-id/index.js'
+} from '#src/framework/express/middlewares/logger'
+import { requestIdMiddleware } from '#src/framework/express/middlewares/request-id'
 
 import { EventEmitter } from 'events'
 
@@ -55,7 +55,7 @@ export const bind = (routers: express.Router[]) => {
     origin: corsAllowOrigins,
   }
 
-  app.use(requestId)
+  app.use(requestIdMiddleware)
 
   app.use(
     morgan('[:date[iso]] Started :method :url for :remote-addr', {

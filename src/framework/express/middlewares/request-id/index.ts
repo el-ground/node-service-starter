@@ -1,12 +1,12 @@
 import expressRequestId from 'express-request-id'
 import { createNamespace } from 'cls-hooked'
-import express from 'express'
+import type { Request, Response, NextFunction, RequestHandler } from 'express'
 
-interface RequestWithId extends express.Request {
+interface RequestWithId extends Request {
   id: string
 }
 
-const addRequestId: express.RequestHandler = expressRequestId({
+const addRequestId: RequestHandler = expressRequestId({
   setHeader: true,
 })
 
@@ -14,8 +14,8 @@ const session = createNamespace('request')
 
 const namespaceWrapper = (
   req: RequestWithId,
-  res: express.Response,
-  next: express.NextFunction,
+  res: Response,
+  next: NextFunction,
 ) => {
   session.run(() => {
     session.set(`reqId`, req.id.split('-')[0])
@@ -27,4 +27,7 @@ export const getRequestId = () => {
   return session.get(`reqId`)
 }
 
-export default [addRequestId, namespaceWrapper as express.RequestHandler]
+export const requestIdMiddleware = [
+  addRequestId,
+  namespaceWrapper as RequestHandler,
+]

@@ -8,7 +8,7 @@
     // Process & infer types from .js files.
     "allowJs": true,
     // Import non-ES modules as default imports. -> set to false, since we're es module, and setting it will make things bad.
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "strictNullChecks": true,
     // skip typechecking libraries. 
     "skipLibCheck": true,

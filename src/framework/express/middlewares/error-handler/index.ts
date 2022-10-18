@@ -1,5 +1,5 @@
-import express from 'express'
-import { logger } from '../logger/index.js'
+import type { Request, Response, NextFunction } from 'express'
+import { logger } from '../logger'
 
 export class ResError extends Error {
   code: number
@@ -10,13 +10,7 @@ export class ResError extends Error {
 }
 
 export const errorHandler =
-  () =>
-  (
-    err: Error,
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction,
-  ) => {
+  () => (err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err) {
       // eslint-disable-next-line
       let message = err.message

@@ -1,4 +1,4 @@
-import { asyncCatch } from '#src/util/async-catch/index.js'
+import { asyncCatch } from '#src/util/async-catch'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PromiseReturningFunction = (...any: any[]) => Promise<any>

@@ -1,3 +1,3 @@
-import { logger } from '#src/framework/express/middlewares/logger/index.js'
+import { logger } from '#src/framework/express/middlewares/logger'
 
 export { logger }
