@@ -40,5 +40,11 @@
     },
     "globals": {
         "logger": true
-    }
+    },
+    "prettier/prettier": [
+        "error",
+        {
+            "endOfLine": "auto"
+        }
+    ]
 }
