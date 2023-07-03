@@ -5,9 +5,8 @@
         "source.fixAll.eslint": true,
     },
     "explorer.confirmDragAndDrop": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
     "eslint.workingDirectories": [
-      "./"
+        "./"
     ],
     "eslint.lintTask.options": ".eslintrc.json",
     "eslint.validate": [
@@ -16,7 +15,7 @@
     ],
     "eslint.format.enable": true,
     "prettier.documentSelectors": [
-        "{.js, .jsx, .css, .ts, .tsx, .mjs, .json}"
+        "{.js, .ts, .cjs, .mjs, .json}"
     ],
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -27,5 +26,4 @@
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
-    "eslint.alwaysShowStatus": true,
 }

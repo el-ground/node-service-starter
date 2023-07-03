@@ -1,19 +1,14 @@
-import { wrapAsyncRouteHandler } from '#framework/express/router'
-import { Request, Response, Router } from 'express'
-import fetch from 'node-fetch' // testing module imports :)
+import { asyncHandler } from '#src/framework/express'
+import { Router } from 'express'
 
-console.log(fetch)
+const exampleRouter = Router()
 
-const router = Router()
-
-router.get(
-  `/search`,
-  wrapAsyncRouteHandler(async (req: Request, res: Response) => {
-    logger.info(`wow!`)
-
+exampleRouter.get(
+  `/example`,
+  asyncHandler(async (req, res) => {
     res.status(200)
     res.send(`Hello world!`)
   }),
 )
 
-export { router }
+export { exampleRouter }

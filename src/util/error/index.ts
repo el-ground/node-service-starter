@@ -1,3 +1,6 @@
-import { ResError } from '#src/framework/express/middlewares/error-handler'
+import {
+  ResError,
+  ErrorWCode,
+} from '#src/framework/express/middlewares/error-handler'
 
-export { ResError }
+export { ResError, ErrorWCode }

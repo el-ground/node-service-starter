@@ -1,9 +1,23 @@
 import type { Request, Response, NextFunction } from 'express'
-import { logger } from '../logger'
+import { logError } from '../logger'
 
+/*
+    Errors that affect router response
+*/
 export class ResError extends Error {
-  code: number
-  constructor(code: number, message: string) {
+  status: number
+  constructor(status: number, message: string) {
+    super(message)
+    this.status = status
+  }
+}
+
+/*
+    Errors that require handling
+*/
+export class ErrorWCode extends Error {
+  code: string
+  constructor(code: string, message: string) {
     super(message)
     this.code = code
   }
@@ -12,12 +26,9 @@ export class ResError extends Error {
 export const errorHandler =
   () => (err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err) {
-      // eslint-disable-next-line
-      let message = err.message
-      if (typeof message === `object`) {
-        message = JSON.stringify(message, null, 2)
-      }
-      logger.error(`error! ${message} ${err.stack}`)
+      logError(
+        `ErrorHandle caught:\nmessage↓\n${err.message}\nstack↓\n${err.stack}`,
+      )
     }
 
     if (res.headersSent) {
@@ -26,12 +37,8 @@ export const errorHandler =
     }
 
     if (err instanceof ResError) {
-      res.status(err.code)
-      if (typeof err.message === 'object') {
-        res.json(err.message)
-      } else {
-        res.send(err.message)
-      }
+      res.status(err.status)
+      res.send(err.message)
       return
     }
 
